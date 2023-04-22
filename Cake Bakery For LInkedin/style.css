@@ -1,0 +1,1403 @@
+/* FONT IMPORTS */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Poppins:wght@200&family=Roboto:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Open+Sans:ital,wght@1,300&family=Roboto:ital,wght@1,100;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Dongle:wght@700&family=Open+Sans:ital,wght@1,300&family=Roboto:ital,wght@1,100;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Dongle:wght@700&family=Open+Sans:ital,wght@1,300&family=Roboto:ital,wght@1,300&family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Comfortaa:wght@300&family=Dongle:wght@700&family=Open+Sans:ital,wght@1,300&family=Roboto:ital,wght@1,300&family=Satisfy&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Uchen", serif;
+}
+/* .all-content{
+     background: antiquewhite; 
+     
+}  */
+/* ======================================================================== NAVBAR ================================================= */
+#navbar {
+  /* background-color: #573818; */
+  padding-left: 60px;
+  font-weight: bold;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+#logo {
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+  font-family: "Satisfy", cursive;
+}
+#logo img {
+  margin-bottom: 15px;
+}
+.navbar-nav {
+  margin-left: 10px;
+}
+
+#collapsibleNavbar a {
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: #a42e37;
+}
+#collapsibleNavbar .dropdown-menu {
+  background-color: antiquewhite;
+}
+li:after {
+  display: block;
+  content: "";
+  border-bottom: solid 1px #00ffff;
+  padding-bottom: 1%;
+  transform: scaleX(0);
+  transition: transform 300ms ease-in-out;
+}
+li:hover:after {
+  transform: scaleX(1);
+}
+
+.icons {
+  margin-left: 30px;
+}
+.icons img {
+  margin-left: 10px;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+.icons img:hover {
+  transform: translateY(-5px);
+}
+@media screen and (max-width: 330px) {
+  #logo {
+    font-size: 15px;
+  }
+}
+/* =====================DARK MODE================ */
+:root {
+  --hue: 223;
+  /* --bg: hsl(var(--hue),10%,90%); */
+  --bg: antiquewhite;
+  /* dark mode clr  */
+  --fg: hsl(var(--hue), 10%, 10%);
+  --primary: hsl(var(--hue), 90%, 50%);
+  --trans-dur: 0.3s;
+  --trans-timing: cubic-bezier(0.76, 0.05, 0.24, 0.95);
+  --trans-timing-in: cubic-bezier(0.76, 0.05, 0.86, 0.06);
+  --trans-timing-out: cubic-bezier(0.05, 0.76, 0.06, 0.86);
+  /* font-size: calc(40px + (80 - 40) * (100vw - 320px) / (2560 - 320)); */
+}
+
+.darkmode {
+  color: var(--fg);
+  font: 1em/1.5 sans-serif;
+}
+body {
+  background-color: antiquewhite;
+  /* display: flex; */
+  /* height: 100vh; */
+  transition: background-color var(--trans-dur), color var(--trans-dur);
+}
+body:has(.switch__input:checked) {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+.switch {
+  margin: auto;
+  position: relative;
+}
+.switch__icon,
+.switch__input {
+  display: block;
+}
+.switch__icon {
+  position: absolute;
+  top: 0.375em;
+  right: 0.375em;
+  width: 0.75em;
+  height: 0.75em;
+  transition: opacity calc(var(--trans-dur) / 2),
+    transform calc(var(--trans-dur) / 2);
+}
+.switch__icon polyline {
+  transition: stroke-dashoffset calc(var(--trans-dur) / 2);
+}
+.switch__icon--light,
+.switch__icon--light polyline {
+  transition-delay: calc(var(--trans-dur) / 2);
+  transition-timing-function: var(--trans-timing-out);
+}
+.switch__icon--dark {
+  opacity: 0;
+  transform: translateX(-0.75em) rotate(30deg) scale(0.75);
+  transition-timing-function: var(--trans-timing-in);
+}
+.switch__input {
+  background-color: hsl(210, 90%, 70%);
+  border-radius: 0.75em;
+  box-shadow: 0 0 0 0.125em hsla(var(--hue), 90%, 50%, 0),
+    0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
+  outline: transparent;
+  position: relative;
+  width: 3em;
+  height: 1.5em;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    box-shadow 0.15s linear;
+}
+.switch__input:focus-visible {
+  box-shadow: 0 0 0 0.125em hsl(var(--hue), 90%, 50%),
+    0.125em 0.125em 0.25em hsla(var(--hue), 90%, 10%, 0.2);
+}
+.switch__input:before,
+.switch__input:after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+.switch__input:before {
+  background-color: hsl(50, 90%, 50%);
+  border-radius: inherit;
+  mask-image: linear-gradient(
+    120deg,
+    hsl(0, 0%, 0%) 20%,
+    hsla(0, 0%, 0%, 0) 80%
+  );
+  -webkit-mask-image: linear-gradient(
+    120deg,
+    hsl(0, 0%, 0%) 20%,
+    hsla(0, 0%, 0%, 0) 80%
+  );
+  inset: 0;
+  transition: background-color var(--trans-dur) var(--trans-timing);
+}
+.switch__input:after {
+  /* background-color: hsl(0,0%,100%); */
+  background-color: antiquewhite;
+  border-radius: 50%;
+  box-shadow: 0.05em 0.05em 0.05em hsla(var(--hue), 90%, 10%, 0.1);
+  top: 0.125em;
+  left: 0.125em;
+  width: 1.25em;
+  height: 1.25em;
+  transition: background-color var(--trans-dur) var(--trans-timing),
+    transform var(--trans-dur) var(--trans-timing);
+  z-index: 1;
+}
+.switch__input:checked {
+  background-color: hsl(290, 90%, 40%);
+}
+.switch__input:checked:before {
+  background-color: hsl(220, 90%, 40%);
+}
+.switch__input:checked:after {
+  background-color: hsl(0, 0%, 0%);
+  transform: translateX(1.5em);
+}
+.switch__input:checked ~ .switch__icon--light,
+.switch__input:checked ~ .switch__icon--light polyline {
+  transition-delay: 0s;
+  transition-timing-function: var(--trans-timing-in);
+}
+.switch__input:checked ~ .switch__icon--light {
+  opacity: 0;
+  transform: translateX(-0.75em) rotate(-30deg) scale(0.75);
+}
+.switch__input:checked ~ .switch__icon--light polyline {
+  stroke-dashoffset: 1.5;
+}
+.switch__input:checked ~ .switch__icon--dark {
+  opacity: 1;
+  transform: translateX(-1.5em);
+  transition-delay: calc(var(--trans-dur) / 2);
+  transition-timing-function: var(--trans-timing-out);
+}
+.switch__sr {
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+}
+
+/* =============DARK MODE SWITCH EXIT================ */
+
+/* =========================================================================== NAVBAR EXIT================================================================= */
+/* ========================================================================== HOME SECTION =================================================================*/
+.home {
+  width: 100%;
+  height: 89.5vh;
+  display: flex;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(./image/background2.png);
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 0;
+}
+.home .img {
+  flex: 1 1 400px;
+}
+.home .img img {
+  width: 100%;
+}
+.home .content {
+  flex: 1 1 400px;
+  margin-left: 60px;
+}
+.content h1 {
+  font-family: "Acme", sans-serif;
+  color: rgb(255, 145, 66);
+  font-size: 80px;
+  font-weight: bolder;
+  text-shadow: 1px 1px 1px black;
+}
+.content h2 {
+  font-size: 60px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-weight: bold;
+}
+.content h3 {
+  font-size: 60px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-weight: bold;
+}
+.changecontent::after {
+  content: " ";
+  color: rgba(161, 109, 14, 1);
+  animation: changetext 10s infinite linear;
+  font-weight: bold;
+}
+@keyframes changetext {
+  0% {
+    content: "Birthday cake";
+  }
+  20% {
+    content: "Choco cake";
+  }
+  50% {
+    content: "Party cake";
+  }
+  60% {
+    content: "Slice cake";
+  }
+  100% {
+    content: "Cup cake";
+  }
+}
+.content p {
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+/* .content .btn{
+    width: 110px;
+    height: 38px;
+    background-color: #573818;
+    color: white;
+} */
+@media screen and (max-width: 800px) {
+  .content h3 {
+    font-size: 50px;
+  }
+  .home .img {
+    display: none;
+  }
+}
+@media screen and (max-width: 860px) {
+  .home {
+    height: 120vh;
+  }
+}
+@media screen and (max-width: 560px) {
+  .home {
+    height: 100vh;
+  }
+}
+@media screen and (max-width: 330px) {
+  .content h2 {
+    font-size: 30px;
+  }
+  .content h3 {
+    font-size: 30px;
+  }
+}
+
+/* ==========================================================================HOME SECTION EXIT ======================================================*/
+
+/*=============================================================================== TOP CARDS =========================================================*/
+#box {
+  margin-top: 10px;
+}
+#box .card {
+  box-shadow: 0px 0px 5px black;
+  margin-top: 10px;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+#box .card:hover {
+  transform: translateY(-10px);
+}
+/* ==================EXPLORE THE TASTE========================= */
+
+.flowingtext .content {
+  text-align: center;
+  min-height: 20vh;
+  display: grid;
+  place-items: center;
+  background-color: hsl(var(--hue), 10%, 10%);
+  color: #fff;
+  font-family: "Inter", "DM Sans", Arial, sans-serif;
+}
+
+.flowingtext .title {
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 800;
+  letter-spacing: clamp(-1.75px, -0.25vw, -3.5px);
+  position: relative;
+  overflow: hidden;
+  background: hsl(var(--hue), 10%, 10%);
+  margin: 0;
+}
+
+.flowingtext .aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  mix-blend-mode: darken;
+  pointer-events: none;
+}
+
+.flowingtext .aurora__item {
+  overflow: hidden;
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background-color: #00c2ff;
+  border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  filter: blur(1rem);
+  mix-blend-mode: overlay;
+}
+
+.flowingtext .aurora__item:nth-of-type(1) {
+  top: -50%;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-1 12s ease-in-out infinite alternate;
+}
+
+.flowingtext .aurora__item:nth-of-type(2) {
+  background-color: #ffc640;
+  right: 0;
+  top: 0;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-2 12s ease-in-out infinite alternate;
+}
+
+.flowingtext .aurora__item:nth-of-type(3) {
+  background-color: #33ff8c;
+  left: 0;
+  bottom: 0;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-3 8s ease-in-out infinite alternate;
+}
+
+.flowingtext .aurora__item:nth-of-type(4) {
+  background-color: #e54cff;
+  right: 0;
+  bottom: -50%;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-4 24s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-1 {
+  0% {
+    top: 0;
+    right: 0;
+  }
+
+  50% {
+    top: 100%;
+    right: 75%;
+  }
+
+  75% {
+    top: 100%;
+    right: 25%;
+  }
+
+  100% {
+    top: 0;
+    right: 0;
+  }
+}
+
+@keyframes aurora-2 {
+  0% {
+    top: -50%;
+    left: 0%;
+  }
+
+  60% {
+    top: 100%;
+    left: 75%;
+  }
+
+  85% {
+    top: 100%;
+    left: 25%;
+  }
+
+  100% {
+    top: -50%;
+    left: 0%;
+  }
+}
+
+@keyframes aurora-3 {
+  0% {
+    bottom: 0;
+    left: 0;
+  }
+
+  40% {
+    bottom: 100%;
+    left: 75%;
+  }
+
+  65% {
+    bottom: 40%;
+    left: 50%;
+  }
+
+  100% {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@keyframes aurora-4 {
+  0% {
+    bottom: -50%;
+    right: 0;
+  }
+
+  50% {
+    bottom: 0%;
+    right: 40%;
+  }
+
+  90% {
+    bottom: 50%;
+    right: 25%;
+  }
+
+  100% {
+    bottom: -50%;
+    right: 0;
+  }
+}
+
+@keyframes aurora-border {
+  0% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  }
+
+  25% {
+    border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%;
+  }
+
+  50% {
+    border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%;
+  }
+
+  75% {
+    border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%;
+  }
+
+  100% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  }
+}
+/* ======================EXPLORE THE TASTE EXIT ===============================*/
+/* ===============================================================TOP CARDS END=========================================================== */
+
+/* =================================================================Buttons============================================================== */
+.custom-btn {
+  /* margin:20px; */
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  /* display: inline-block; */
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+  align-items: center;
+  justify-content: center;
+}
+.btn-9 {
+  border: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+.btn-9:after {
+  position: absolute;
+  content: " ";
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1fd1f9;
+  background-image: linear-gradient(315deg, #1fd1f9 0%, #b621fe 74%);
+  transition: all 0.3s ease;
+}
+.btn-9:hover {
+  background: transparent;
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+  color: #fff;
+}
+.btn-9:hover:after {
+  -webkit-transform: scale(2) rotate(180deg);
+  transform: scale(2) rotate(180deg);
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.5),
+    inset 4px 4px 6px 0 rgba(116, 125, 136, 0.3);
+}
+
+/* butn 14 */
+.btn-14 {
+  background: rgb(255, 151, 0);
+  border: none;
+  z-index: 1;
+}
+.btn-14:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 0;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 5px;
+  background-color: #eaf818;
+  background-image: linear-gradient(315deg, #eaf818 0%, #f6fc9c 74%);
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5);
+  /* 7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1); */
+  transition: all 0.3s ease;
+}
+.btn-14:hover {
+  color: #000;
+}
+.btn-14:hover:after {
+  top: auto;
+  bottom: 0;
+  height: 100%;
+}
+.btn-14:active {
+  top: 2px;
+}
+
+/* btn  5 */
+.btn-5 {
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  background: rgb(255, 27, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 27, 0, 1) 0%,
+    rgba(251, 75, 2, 1) 100%
+  );
+}
+.btn-5:hover {
+  color: #ffffff;
+  background: transparent;
+  box-shadow: none;
+}
+.btn-5:before,
+.btn-5:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 2px;
+  width: 0;
+  background: #f0094a;
+  box-shadow: -1px -1px 5px 0px #fff, 7px 7px 20px 0px #0003,
+    4px 4px 5px 0px #0002;
+  transition: 400ms ease all;
+}
+.btn-5:after {
+  right: inherit;
+  top: inherit;
+  left: 0;
+  bottom: 0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after {
+  width: 100%;
+  transition: 800ms ease all;
+}
+
+/* 15 */
+.btn-15 {
+  background: #448aae;
+  border: none;
+  z-index: 1;
+}
+.btn-15:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  background-color: #663dff;
+  border-radius: 5px;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+.btn-15:hover {
+  color: #fff;
+}
+.btn-15:hover:after {
+  left: 0;
+  width: 100%;
+}
+.btn-15:active {
+  top: 2px;
+}
+
+/* 3 */
+.btn-3 {
+  background: rgb(0, 172, 238);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 172, 238, 1) 0%,
+    rgba(2, 126, 251, 1) 100%
+  );
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+}
+.btn-3 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-3:before,
+.btn-3:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+  background: rgba(2, 126, 251, 1);
+  transition: all 0.3s ease;
+}
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3:hover {
+  background: transparent;
+  box-shadow: none;
+}
+.btn-3:hover:before {
+  height: 100%;
+}
+.btn-3:hover:after {
+  width: 100%;
+}
+.btn-3 span:hover {
+  color: rgba(2, 126, 251, 1);
+}
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  background: rgba(2, 126, 251, 1);
+  transition: all 0.3s ease;
+}
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3 span:hover:before {
+  height: 100%;
+}
+.btn-3 span:hover:after {
+  width: 100%;
+}
+
+/* ==========================================Button EXIT========================================== */
+
+/*========================================================================= BANNER ==========================================================*/
+.banner {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url(./image/banner2.png);
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  box-shadow: 0px 0px 10px black;
+  margin-top: 50px;
+}
+.banner .img {
+  flex: 1 1 400px;
+}
+.banner .img img {
+  width: 100%;
+}
+.banner .content {
+  flex: 1 1 400px;
+  margin-left: 60px;
+  margin-top: 60px;
+}
+.banner .content h3 {
+  color: rgba(161, 109, 14, 1);
+  font-weight: bold;
+}
+.banner .content h2 {
+  font-size: 50px;
+  color: rgba(161, 109, 14, 1);
+  font-weight: bold;
+  text-shadow: 1px 1px 1px black;
+}
+.banner .content p {
+  color: rgba(161, 109, 14, 1);
+}
+#btnorder button {
+  width: 150px;
+  height: 32px;
+  letter-spacing: 5px;
+  background-color: rgba(161, 109, 14, 1);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@media screen and (max-width: 800px) {
+  .banner .content h3 {
+    font-size: 50px;
+  }
+}
+@media screen and (max-width: 855px) {
+  .banner {
+    height: 100vh;
+  }
+}
+/*====================================================================  banner end ===================================================*/
+/*==================================================================== product cards =================================================*/
+#product-cards h1 {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 50px;
+  color: rgba(161, 109, 14, 1);
+  text-shadow: 1px 1px 1px black;
+  border-bottom: 2px solid rgba(161, 109, 14, 1);
+}
+#product-cards .card {
+  background-color: rgba(161, 109, 14, 1);
+  box-shadow: 0 0 3px black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.overlay {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: 10%;
+  margin-left: 0;
+  width: 70px;
+}
+#product-cards .card:hover .overlay {
+  opacity: 1;
+  margin-left: 5%;
+  transition: 0.5s ease;
+}
+.overlay i img {
+  background-color: #2e1700;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  padding: 7px;
+  margin: -20%;
+  margin-bottom: 5%;
+  cursor: pointer;
+}
+.overlay .btn-secondary {
+  background: transparent !important;
+  border: none;
+  box-shadow: none;
+}
+#product-cards h3 {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+.star .checked {
+  color: yellow;
+}
+#product-cards p {
+  font-family: "Open Sans", sans-serif;
+  color: #2e1700;
+  font-weight: bold;
+}
+#product-cards h6 {
+  font-size: 20px;
+  color: #2e1700;
+  font-weight: bold;
+}
+#product-cards h6 span button {
+  width: 100px;
+  height: 26px;
+  font-size: 15px;
+  background: transparent;
+  letter-spacing: 3px;
+  border: 2px solid #573818;
+  border-radius: 5px;
+  float: right;
+  font-weight: bold;
+  transition: 0.5s ease;
+  cursor: pointer;
+}
+#product-cards h6 span button:hover {
+  background-color: #2e1700;
+  color: white;
+}
+
+/*============================================================ product cards end ================================================================*/
+
+/*================================================================= gallary ====================================================================*/
+#gallary {
+  margin-top: 50px;
+}
+#gallary h1 {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 50px;
+  color: rgba(161, 109, 14, 1);
+  text-shadow: 1px 1px 1px black;
+  border-bottom: 2px solid rgba(161, 109, 14, 1);
+}
+#gallary .card {
+  box-shadow: 3px 3px 3px black;
+  cursor: pointer;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 49, 49, 0.5);
+  border-right: 1px solid rgba(0, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(42, 15, 192, 0.5);
+  border-left: 1px solid rgba(179, 151, 52, 0.5);
+}
+
+#gallary span {
+  position: absolute;
+  border-radius: 100vmax;
+}
+.top {
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 50%,
+    rgba(255, 49, 49, 0.5),
+    rgb(255, 49, 49)
+  );
+}
+.bottom {
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    rgba(42, 15, 192, 0.5),
+    rgb(8, 60, 109),
+    transparent 50%
+  );
+}
+.right {
+  top: 0;
+  right: 0;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 30%,
+    rgba(0, 255, 255, 0.5),
+    rgb(0, 255, 255)
+  );
+}
+.left {
+  left: 0;
+  bottom: 0;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 113, 0.5),
+    rgb(255, 255, 113),
+    transparent 70%
+  );
+}
+.top {
+  animation: animateTop 3s ease-in-out infinite;
+}
+.bottom {
+  animation: animateBottom 3s ease-in-out infinite;
+}
+.right {
+  animation: animateRight 3s ease-in-out infinite;
+}
+.left {
+  animation: animateLeft 3s ease-in-out infinite;
+}
+@keyframes animateTop {
+  25% {
+    width: 100%;
+    opacity: 1;
+  }
+  30%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes animateBottom {
+  0%,
+  50% {
+    opacity: 0;
+    width: 0;
+  }
+  75% {
+    opacity: 1;
+    width: 100%;
+  }
+  76%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes animateRight {
+  0%,
+  25% {
+    opacity: 0;
+    height: 0;
+  }
+  50% {
+    opacity: 1;
+    height: 100%;
+  }
+  55%,
+  100% {
+    height: 100%;
+    opacity: 0;
+  }
+}
+@keyframes animateLeft {
+  0%,
+  75% {
+    opacity: 0;
+    bottom: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  #gallary span,
+  .top,
+  .right,
+  .left,
+  .bottom {
+    display: none;
+  }
+}
+/*  */
+#gallary .overlay {
+  opacity: 0;
+  width: 100%;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+#gallary .card:hover .overlay {
+  opacity: 5;
+  margin-top: 20%;
+  transition: 0.5s ease;
+}
+
+/*========================================================= gallary EXIT ==========================================================================*/
+
+/*=========================================================== ABOUT US===================================================================*/
+#about {
+  margin-top: 50px;
+}
+#about h1 {
+  text-align: center;
+  font-weight: bolder;
+  margin-top: 50px;
+  text-shadow: 1px 1px 1px black;
+  color: rgba(161, 109, 14, 1);
+  border-bottom: 2px solid rgba(161, 109, 14, 1);
+}
+#about .card {
+  background-color: transparent;
+}
+#about p {
+  color: rgba(161, 109, 14, 1);
+  font-family: Roboto;
+  font-size: 17px;
+  font-weight: bold;
+}
+#bt button {
+  width: 150px;
+  height: 32px;
+  letter-spacing: 3px;
+  background-color: rgba(161, 109, 14, 1);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 1000px) {
+  #about p {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 760px) {
+  #about p {
+    font-size: 20px;
+  }
+}
+/*====================================================================== ABOUT US EXIT================================================================= */
+
+
+/* ===================================================================== REVIEW ========================================================================= */
+/* contact class is Testimonials heading */
+#contact {
+    margin-top: 100px;
+  }
+#contact h1 {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
+    color: rgba(161, 109, 14, 1);
+    text-shadow: 1px 1px 1px black;
+    border-bottom: 2px solid rgba(161, 109, 14, 1);
+  }
+* customers */ .customers {
+  margin-top: 40px;
+  padding: 40px 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("images/customer-banner.jpg") center/cover no-repeat fixed;
+}
+.customer {
+  background: antiquewhite;
+  padding: 35px;
+
+  text-align: center;
+  margin: 24px 0;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.rating {
+  margin: 10px 0;
+  color: yellow;
+}
+.customer h3 {
+  font-size: 25px;
+  color: #000;
+}
+.customer p {
+  color: #000;
+  opacity: 0.7;
+  line-height: 1.8;
+  width: 60%;
+  margin: 0 auto;
+}
+.customer img {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  margin: 25px auto;
+}
+.customer span {
+  font-weight: 700;
+  opacity: 0.7;
+  color: #000;
+}
+.customer:hover {
+  transform: translateY(-18px);
+}
+@media (min-width: 992px) {
+  .customers-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 30px;
+  }
+}
+@media (min-width: 1370px) {
+  .customers-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .customer p {
+    width: 100%;
+  }
+  .customer img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* ================================================================== REVIEW EXIT===================================================== */
+
+/* ==================================================================== FOOTER =======================================================*/
+#footer {
+  width: 100%;
+  background-color: #573818;
+  box-shadow: 0px 0px 5px black;
+  margin-top: 100px;
+}
+#footer h1 {
+  color: white;
+  padding-top: 30px;
+}
+#footer p {
+  color: white;
+}
+.icons i {
+  background-color: white;
+  color: #573818;
+  border-radius: 50px;
+  padding: 6px;
+  font-size: 30px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.icons i:hover {
+  background-color: rgba(161, 109, 14, 1);
+  color: white;
+}
+/*  */
+.glowanim {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 100vh; */
+  color: #000000;
+  margin-top: 7px;
+}
+div .boxer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(231, 99, 99);
+  padding: 14px 25px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.01);
+}
+.boxer::after {
+  position: absolute;
+  content: "";
+  top: 15px;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  transform: scale(0.9) translateZ(0);
+  filter: blur(15px);
+  background: linear-gradient(
+    to left,
+    #ff5770,
+    #e4428d,
+    #c42da8,
+    #9e16c3,
+    #6501de,
+    #9e16c3,
+    #c42da8,
+    #e4428d,
+    #ff5770
+  );
+  background-size: 200%, 200%;
+  animation: animateGlow 1.25s linear infinite;
+}
+@keyframes animateGlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 500%;
+  }
+}
+
+/* ==================================SHARE BUTTONS================================== */
+.wrapperfoot {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  place-items: center;
+  background: transparent;
+}
+.wrapperfoot .button {
+  
+  height: 60px;
+  width: 60px;
+  float: left;
+  margin: 0 5px;
+  overflow: hidden;
+  color: #fff;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    inset -7px -7px 10px 0px rgba(0, 0, 0, 0.1),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-out;
+  font-size: 20px;
+}
+.wrapperfoot .button:hover {
+  width: 200px;
+}
+.wrapperfoot .button .icon {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  text-align: center;
+  border-radius: 50px;
+  box-sizing: border-box;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+.wrapperfoot .button:nth-child(1) .icon {
+  background: #4267b2;
+}
+.wrapperfoot .button:nth-child(2) .icon {
+  background: #1da1f2;
+}
+.wrapperfoot .button:nth-child(3) .icon {
+  background: #e1306c;
+}
+.wrapperfoot .button:nth-child(4) .icon {
+  background: #333;
+}
+.wrapperfoot .button:nth-child(5) .icon {
+  background: #ff0000;
+}
+
+.wrapperfoot .button:nth-child(1):hover .icon {
+  background: #4267b2;
+}
+.wrapperfoot .button:nth-child(2):hover .icon {
+  background: #1da1f2;
+}
+.wrapperfoot .button:nth-child(3):hover .icon {
+  background: #e1306c;
+}
+.wrapperfoot .button:nth-child(4):hover .icon {
+  background: #333;
+}
+.wrapperfoot .button:nth-child(5):hover .icon {
+  background: #ff0000;
+}
+.wrapperfoot .button .icon i {
+  font-size: 25px;
+  line-height: 60px;
+  transition: all 0.3s ease-out;
+}
+.wrapperfoot .button:hover .icon i {
+  color: #fff;
+}
+.wrapperfoot .button span {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 60px;
+  margin-left: 10px;
+  transition: all 0.3s ease-out;
+}
+.wrapperfoot .button:nth-child(1) span {
+  color: #4267b2;
+}
+.wrapperfoot .button:nth-child(2) span {
+  color: #1da1f2;
+}
+.wrapperfoot .button:nth-child(3) span {
+  color: #fb2175;
+}
+.wrapperfoot .button:nth-child(4) span {
+  color: #333;
+}
+.wrapperfoot .button:nth-child(5) span {
+  color: #ff0000;
+}
+
+/* ============================== SHARE BUTTONS EXIT========================================= */
+.copyright {
+  color: white;
+  margin-top: 20px;
+}
+.credite {
+  color: white;
+}
+/*===================================================================== FOOTER EXIT ======================================================*/
+/*================================ UPSCROLL BUTTON ============================================*/
+html {
+  scroll-behavior: smooth;
+}
+.arrow {
+  position: fixed;
+  background-color: rgba(161, 109, 14, 1);
+  border-radius: 50px;
+  height: 50px;
+  bottom: 40px;
+  right: 50px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 50px;
+}
+/* ============================= UPSCROLL BUTTON EXIT =========================================*/
